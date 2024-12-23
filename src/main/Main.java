@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         VideoService videoService = new VideoServiceImpl(new FileVideoRepository("videos.txt"));
-        SearchStrategy searchStrategy = new SearchStrategyImpl();
+
 
         while (true) {
             System.out.println("\n=== Sistema de Gerenciamento de Vídeos ===");
@@ -58,7 +58,7 @@ public class Main {
             } else if (opcao == 3) {
                 System.out.print("Digite o título para busca: ");
                 String query = scanner.nextLine();
-                List<Video> resultados = searchStrategy.searchByTitle(videoService.listVideos(), query);
+                List<Video> resultados = videoService.searchByTitle(query);
                 for (Video video : resultados) {
                     System.out.println(video);
                 }
