@@ -2,17 +2,19 @@ package service;
 
 import model.Video;
 import repository.VideoRepository;
+import repository.VideoRepositoryImpl;
 import strategy.SearchStrategy;
 import strategy.SearchStrategyImpl;
 
 import java.util.List;
 
 public class VideoServiceImpl implements VideoService {
+    private static final String ARQUIVO_VIDEOS = "videos.txt";
     private final VideoRepository repository;
     SearchStrategy searchStrategy = new SearchStrategyImpl();
 
-    public VideoServiceImpl(VideoRepository repository) {
-        this.repository = repository;
+    public VideoServiceImpl() {
+        this.repository = new VideoRepositoryImpl(ARQUIVO_VIDEOS);
     }
 
     @Override

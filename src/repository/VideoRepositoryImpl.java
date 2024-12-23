@@ -6,10 +6,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileVideoRepository implements VideoRepository {
+public class VideoRepositoryImpl implements VideoRepository {
     private final File file;
 
-    public FileVideoRepository(String filePath) {
+    public VideoRepositoryImpl(String filePath) {
         this.file = new File(filePath);
     }
 
