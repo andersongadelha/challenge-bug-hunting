@@ -1,7 +1,6 @@
 package main;
 
 import model.Video;
-import repository.VideoRepositoryImpl;
 import service.VideoService;
 import service.VideoServiceImpl;
 
@@ -10,11 +9,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import static util.InputUtil.getOpcaoInteira;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         VideoService videoService = new VideoServiceImpl();
-
 
         while (true) {
             System.out.println("\n=== Sistema de Gerenciamento de Vídeos ===");
@@ -23,8 +23,7 @@ public class Main {
             System.out.println("3. Pesquisar vídeo por título");
             System.out.println("4. Sair");
             System.out.print("Escolha uma opção: ");
-            int opcao = scanner.nextInt();
-            scanner.nextLine(); // Consumir a quebra de linha
+            int opcao = getOpcaoInteira(scanner);
 
             if (opcao == 1) {
                 System.out.print("Digite o título do vídeo: ");
@@ -32,8 +31,7 @@ public class Main {
                 System.out.print("Digite a descrição do vídeo: ");
                 String descricao = scanner.nextLine();
                 System.out.print("Digite a duração do vídeo (em minutos): ");
-                int duracao = scanner.nextInt();
-                scanner.nextLine(); // Consumir a quebra de linha
+                int duracao = getOpcaoInteira(scanner);
                 System.out.print("Digite a categoria do vídeo: ");
                 String categoria = scanner.nextLine();
                 System.out.print("Digite a data de publicação (dd/MM/yyyy): ");
@@ -64,7 +62,7 @@ public class Main {
                 System.out.println("Saindo do sistema...");
                 break;
             } else {
-                System.out.println("Opção inválida.");
+                System.out.println("Digite um inteiro de 1 - 4");
             }
         }
 
