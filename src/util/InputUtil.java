@@ -1,5 +1,8 @@
 package util;
 
+import model.Categoria;
+
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -13,7 +16,7 @@ public class InputUtil {
 
     /**
      * Função para receber um input e retornar valor inteiro.
-     * Caso seja recebido algum valor diferente de um inteiro menor ou igual a zero a função recebe o intput novamente.
+     * Caso seja recebido algum valor diferente de um inteiro menor ou igual a zero a função recebe o input novamente.
      *
      * @param scanner
      *
@@ -57,5 +60,23 @@ public class InputUtil {
         } while (entrada.isEmpty());
 
         return entrada;
+    }
+
+    /**
+     * Função para receber input até a entrada ser uma categoria valida.
+     *
+     * @param scanner
+     *
+     * @return Categoria
+     */
+    public static Categoria getCategoria(Scanner scanner) {
+        String entrada;
+        Categoria categoria;
+        do {
+            entrada = scanner.nextLine();
+            categoria = Categoria.desserializar(entrada);
+        } while (Objects.isNull(categoria));
+
+        return categoria;
     }
 }

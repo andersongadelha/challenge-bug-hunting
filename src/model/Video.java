@@ -7,10 +7,10 @@ public class Video {
     private String titulo;
     private String descricao;
     private int duracao; // em minutos
-    private String categoria;
+    private Categoria categoria;
     private Date dataPublicacao;
 
-    public Video(String titulo, String descricao, int duracao, String categoria, Date dataPublicacao) {
+    public Video(String titulo, String descricao, int duracao, Categoria categoria, Date dataPublicacao) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.duracao = duracao;
@@ -30,7 +30,7 @@ public class Video {
         return duracao;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -48,7 +48,7 @@ public class Video {
         try {
             String[] partes = linha.split(";");
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            return new Video(partes[0], partes[1], Integer.parseInt(partes[2]), partes[3], sdf.parse(partes[4]));
+            return new Video(partes[0], partes[1], Integer.parseInt(partes[2]), Categoria.desserializar(partes[3]), sdf.parse(partes[4]));
         } catch (Exception e) {
             return null; // Ignora erros de parsing
         }

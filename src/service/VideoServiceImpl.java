@@ -1,5 +1,6 @@
 package service;
 
+import model.Categoria;
 import model.Video;
 import repository.VideoRepository;
 import repository.VideoRepositoryImpl;
@@ -11,8 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import static util.InputUtil.getInputNaoVazio;
-import static util.InputUtil.getOpcaoInteira;
+import static util.InputUtil.*;
 
 public class VideoServiceImpl implements VideoService {
     private static final String ARQUIVO_VIDEOS = "videos.txt";
@@ -35,7 +35,7 @@ public class VideoServiceImpl implements VideoService {
         System.out.print("Digite a duração do vídeo (em minutos): ");
         int duracao = getOpcaoInteira(scanner);
         System.out.print("Digite a categoria do vídeo: ");
-        String categoria = scanner.nextLine();
+        Categoria categoria = getCategoria(scanner);
         System.out.print("Digite a data de publicação (dd/MM/yyyy): ");
         String dataStr = scanner.nextLine();
 
