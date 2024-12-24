@@ -16,12 +16,13 @@ import static util.InputUtil.getOpcaoInteira;
 public class VideoServiceImpl implements VideoService {
     private static final String ARQUIVO_VIDEOS = "videos.txt";
     private final VideoRepository repository;
-    private Scanner scanner;
-    SearchStrategy searchStrategy = new SearchStrategyImpl();
+    private final Scanner scanner;
+    private final SearchStrategy searchStrategy;
 
     public VideoServiceImpl(Scanner scanner) {
         this.repository = new VideoRepositoryImpl(ARQUIVO_VIDEOS);
         this.scanner = scanner;
+        this.searchStrategy = new SearchStrategyImpl();
     }
 
     @Override
