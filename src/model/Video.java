@@ -1,16 +1,17 @@
 package model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import util.LocalDateUtil;
+
+import java.time.LocalDate;
 
 public class Video {
     private String titulo;
     private String descricao;
-    private int duracao; // em minutos
+    private int duracao;
     private Categoria categoria;
-    private Date dataPublicacao;
+    private LocalDate dataPublicacao;
 
-    public Video(String titulo, String descricao, int duracao, Categoria categoria, Date dataPublicacao) {
+    public Video(String titulo, String descricao, int duracao, Categoria categoria, LocalDate dataPublicacao) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.duracao = duracao;
@@ -34,21 +35,19 @@ public class Video {
         return categoria;
     }
 
-    public Date getDataPublicacao() {
+    public LocalDate getDataPublicacao() {
         return dataPublicacao;
     }
 
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return titulo + ";" + descricao + ";" + duracao + ";" + categoria + ";" + sdf.format(dataPublicacao);
+        return titulo + ";" + descricao + ";" + duracao + ";" + categoria + ";" + LocalDateUtil.serializar(dataPublicacao);
     }
 
     public static Video fromString(String linha) {
         try {
             String[] partes = linha.split(";");
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            return new Video(partes[0], partes[1], Integer.parseInt(partes[2]), Categoria.desserializar(partes[3]), sdf.parse(partes[4]));
+            return new Video(partes[0], partes[1], Integer.parseInt(partes[2]), Categoria.desserializar(partes[3]), LocalDateUtil.desserializar(partes[4]));
         } catch (Exception e) {
             return null; // Ignora erros de parsing
         }

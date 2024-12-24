@@ -2,6 +2,7 @@ package util;
 
 import model.Categoria;
 
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -78,5 +79,27 @@ public class InputUtil {
         } while (Objects.isNull(categoria));
 
         return categoria;
+    }
+
+    /**
+     * Função para receber input enquanto a entrada seja inválida para um localDate no formato dd/MM/aaaa.
+     *
+     * @param scanner
+     *
+     * @return LocalDate
+     */
+    public static LocalDate getLocalDate(Scanner scanner) {
+        String entrada;
+        LocalDate data = null;
+        do {
+            entrada = scanner.nextLine();
+            try {
+                data = LocalDateUtil.desserializar(entrada);
+            } catch (Exception e) {
+                System.out.println("Digite a data no formato dd/MM/aaaa:");
+            }
+        } while (Objects.isNull(data));
+
+        return data;
     }
 }
