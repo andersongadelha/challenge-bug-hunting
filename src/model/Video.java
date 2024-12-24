@@ -39,11 +39,6 @@ public class Video {
         return dataPublicacao;
     }
 
-    @Override
-    public String toString() {
-        return titulo + ";" + descricao + ";" + duracao + ";" + categoria + ";" + LocalDateUtil.serializar(dataPublicacao);
-    }
-
     public static Video fromString(String linha) {
         try {
             String[] partes = linha.split(";");

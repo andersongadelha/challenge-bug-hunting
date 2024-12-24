@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface VideoService {
     void addVideo();
-    List<Video> listVideos();
+    void listVideos();
     List<Video> searchByTitle(String query);
 }

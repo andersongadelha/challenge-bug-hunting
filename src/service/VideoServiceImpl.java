@@ -7,6 +7,7 @@ import repository.VideoRepositoryImpl;
 import strategy.SearchStrategy;
 import strategy.SearchStrategyImpl;
 import util.InputUtil;
+import util.LocalDateUtil;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -51,14 +52,24 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public List<Video> listVideos() {
-        return repository.findAll();
+    public void listVideos() {
+        List<Video> videos = repository.findAll();
+        videos.forEach(this::detalhes);
     }
 
     @Override
     public List<Video> searchByTitle(String query) {
-        var videos = listVideos();
+        var videos = repository.findAll();
 
         return searchStrategy.searchByTitle(videos, query);
+    }
+
+    private void detalhes(Video video) {
+        System.out.println("Titulo: " + video.getTitulo());
+        System.out.println("Descrição: " + video.getDescricao());
+        System.out.println("Duração: " + video.getDuracao());
+        System.out.println("Categoria: " + video.getCategoria());
+        System.out.println("Data de publicação: " + LocalDateUtil.serializar(video.getDataPublicacao()));
+        System.out.println();
     }
 }

@@ -29,10 +29,7 @@ public class Main {
                     videoService.addVideo();
                     break;
                 case 2:
-                    List<Video> videos = videoService.listVideos();
-                    for (Video video : videos) {
-                        System.out.println(video);
-                    }
+                    videoService.listVideos();
                     break;
                 case 3:
                     System.out.print("Digite o título para busca: ");
