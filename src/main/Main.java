@@ -4,8 +4,6 @@ import model.Video;
 import service.VideoService;
 import service.VideoServiceImpl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
