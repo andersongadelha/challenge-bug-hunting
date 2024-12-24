@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import static util.InputUtil.getInputNaoVazio;
 import static util.InputUtil.getOpcaoInteira;
 
 public class VideoServiceImpl implements VideoService {
@@ -28,9 +29,9 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public void addVideo() {
         System.out.print("Digite o título do vídeo: ");
-        String titulo = scanner.nextLine();
+        String titulo = getInputNaoVazio(scanner);
         System.out.print("Digite a descrição do vídeo: ");
-        String descricao = scanner.nextLine();
+        String descricao = getInputNaoVazio(scanner);
         System.out.print("Digite a duração do vídeo (em minutos): ");
         int duracao = getOpcaoInteira(scanner);
         System.out.print("Digite a categoria do vídeo: ");
