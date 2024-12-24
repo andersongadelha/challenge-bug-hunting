@@ -5,7 +5,7 @@ import model.Video;
 import java.util.List;
 
 public interface VideoService {
-    void addVideo(Video video);
+    void addVideo();
     List<Video> listVideos();
     List<Video> searchByTitle(String query);
 }
