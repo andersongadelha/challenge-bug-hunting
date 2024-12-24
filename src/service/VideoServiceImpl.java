@@ -58,10 +58,10 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public List<Video> searchByTitle(String query) {
-        var videos = repository.findAll();
-
-        return searchStrategy.searchByTitle(videos, query);
+    public void searchByTitle(String query) {
+        List<Video> videos = repository.findAll();
+        List<Video> videosFiltrados = searchStrategy.searchByTitle(videos, query);
+        videosFiltrados.forEach(this::detalhes);
     }
 
     private void detalhes(Video video) {

@@ -1,10 +1,8 @@
 package main;
 
-import model.Video;
 import service.VideoService;
 import service.VideoServiceImpl;
 
-import java.util.List;
 import java.util.Scanner;
 
 import static util.InputUtil.getOpcaoInteira;
@@ -34,10 +32,7 @@ public class Main {
                 case 3:
                     System.out.print("Digite o título para busca: ");
                     String query = scanner.nextLine();
-                    List<Video> resultados = videoService.searchByTitle(query);
-                    for (Video video : resultados) {
-                        System.out.println(video);
-                    }
+                    videoService.searchByTitle(query);
                     break;
                 case 4:
                     System.out.println("Saindo do sistema...");
