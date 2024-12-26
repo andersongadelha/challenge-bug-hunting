@@ -60,17 +60,24 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
+    public void listVideosOrderByDate() {
+        List<Video> videos = repository.findAll();
+        List<Video> orderedVideos = searchStrategy.orderByDate(videos);
+        orderedVideos.forEach(this::showDetails);
+    }
+
+    @Override
     public void searchByTitle(String query) {
         List<Video> videos = repository.findAll();
-        List<Video> videosFiltrados = searchStrategy.searchByTitle(videos, query);
-        videosFiltrados.forEach(this::showDetails);
+        List<Video> filteredVideos = searchStrategy.searchByTitle(videos, query);
+        filteredVideos.forEach(this::showDetails);
     }
 
     @Override
     public void searchByCategory(Category query) {
         List<Video> videos = repository.findAll();
-        List<Video> videosFiltrados = searchStrategy.searchByCategory(videos, query);
-        videosFiltrados.forEach(this::showDetails);
+        List<Video> filteredVideos = searchStrategy.searchByCategory(videos, query);
+        filteredVideos.forEach(this::showDetails);
     }
 
     @Override

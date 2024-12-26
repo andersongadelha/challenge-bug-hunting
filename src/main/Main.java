@@ -24,6 +24,7 @@ public class Main {
             System.out.println("4. Editar vídeo");
             System.out.println("5. Excluir vídeo");
             System.out.println("6. Filtrar vídeos por categoria");
+            System.out.println("7. Listar vídeos por ordem cronológica");
             System.out.println("8. Sair");
             System.out.print("Escolha uma opção: ");
             option = getPositiveInteger(scanner);
@@ -54,6 +55,9 @@ public class Main {
                     System.out.println("Digite a categoria que deseja filtrar os vídeos:");
                     Category categoryFilter = getCategory(scanner);
                     videoService.searchByCategory(categoryFilter);
+                    break;
+                case 7:
+                    videoService.listVideosOrderByDate();
                     break;
                 case 8:
                     System.out.println("Saindo do sistema...");
