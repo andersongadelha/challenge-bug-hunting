@@ -1,0 +1,15 @@
+1;O Poderoso Chefão;Um drama sobre a família Corleone e o mundo do crime organizado;175;FILME;24/03/1972
+2;Breaking Bad;Um professor de química se torna um fabricante de metanfetamina;47;SERIE;20/01/2008
+3;Planeta Terra;Uma série documental sobre a natureza e a vida selvagem;50;DOCUMENTARIO;05/03/2006
+4;Vingadores: Ultimato;Os heróis se unem para derrotar Thanos e salvar o universo;181;FILME;26/04/2019
+5;Stranger Things;Um grupo de crianças enfrenta eventos sobrenaturais em sua cidade;50;SERIE;15/07/2016
+6;A Marcha dos Pinguins;Um documentário sobre a jornada dos pinguins imperadores;80;DOCUMENTARIO;26/01/2005
+7;Interestelar;Uma equipe de astronautas viaja por um buraco de minhoca em busca de um novo lar para a humanidade;169;FILME;07/11/2014
+8;Game of Thrones;Famílias nobres lutam pelo controle do Trono de Ferro em Westeros;60;SERIE;17/04/2011
+9;Blackfish;Um documentário sobre a vida de orcas em cativeiro;83;DOCUMENTARIO;19/07/2013
+10;A Origem;Um ladrão que invade sonhos tenta realizar um último trabalho;148;FILME;16/07/2010
+11;The Crown;A história do reinado da Rainha Elizabeth II;58;SERIE;04/11/2016
+12;Cowspiracy;Um documentário sobre o impacto ambiental da pecuária;85;DOCUMENTARIO;26/06/2014
+13;O Senhor dos Anéis: A Sociedade do Anel;Um grupo de heróis tenta destruir o Um Anel;178;FILME;19/12/2001
+14;The Mandalorian;Um caçador de recompensas navega pela galáxia após a queda do Império;40;SERIE;12/11/2019
+15;13th;Um documentário sobre a história da desigualdade racial nos EUA;100;DOCUMENTARIO;07/10/2016
