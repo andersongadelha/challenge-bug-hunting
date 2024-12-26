@@ -13,4 +13,5 @@ public interface VideoRepository {
     int getLastId();
     Optional<Video> findById(int id);
     void update(int id, String title, String description, int duration, Category category, LocalDate publishDate);
+    void remove(Video video);
 }

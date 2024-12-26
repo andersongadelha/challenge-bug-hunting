@@ -92,7 +92,17 @@ public class VideoServiceImpl implements VideoService {
                     System.out.println("Vídeo atualizado com sucesso.");
                 },
                 () -> System.out.println("Não foi encontrado um vídeo com id " + id));
+    }
 
+    @Override
+    public void removeById(int id) {
+        Optional<Video> optionalVideo = repository.findById(id);
+        optionalVideo.ifPresentOrElse(
+                video -> {
+                    repository.remove(video);
+                    System.out.println("Vídeo excluído com sucesso.");
+                },
+                () -> System.out.println("Não foi encontrado um vídeo com id " + id));
     }
 
     private void showDetails(Video video) {

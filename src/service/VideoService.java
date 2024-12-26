@@ -5,4 +5,5 @@ public interface VideoService {
     void listVideos();
     void searchByTitle(String query);
     void editVideo(int id);
+    void removeById(int id);
 }

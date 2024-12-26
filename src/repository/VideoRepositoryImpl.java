@@ -51,8 +51,7 @@ public class VideoRepositoryImpl implements VideoRepository {
     @Override
     public int getLastId() {
         List<Video> videos = findAll();
-
-        return videos.size();
+        return videos.stream().mapToInt(Video::getId).max().orElse(0);
     }
 
     @Override
@@ -74,6 +73,13 @@ public class VideoRepositoryImpl implements VideoRepository {
                 video.setPublishDate(publishDate);
             }
         }
+        saveVideos(videos);
+    }
+
+    @Override
+    public void remove(Video videoForRemove) {
+        List<Video> videos = findAll();
+        videos.removeIf(video -> video.getId() == videoForRemove.getId());
         saveVideos(videos);
     }
 
