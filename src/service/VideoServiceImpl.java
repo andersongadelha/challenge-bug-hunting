@@ -67,6 +67,13 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
+    public void searchByCategory(Category query) {
+        List<Video> videos = repository.findAll();
+        List<Video> videosFiltrados = searchStrategy.searchByCategory(videos, query);
+        videosFiltrados.forEach(this::showDetails);
+    }
+
+    @Override
     public void editVideo(int id) {
         Optional<Video> optionalVideo = repository.findById(id);
         optionalVideo.ifPresentOrElse(

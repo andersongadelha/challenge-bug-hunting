@@ -1,10 +1,12 @@
 package main;
 
+import model.Category;
 import service.VideoService;
 import service.VideoServiceImpl;
 
 import java.util.Scanner;
 
+import static util.InputUtil.getCategory;
 import static util.InputUtil.getPositiveInteger;
 
 public class Main {
@@ -21,6 +23,7 @@ public class Main {
             System.out.println("3. Pesquisar vídeo por título");
             System.out.println("4. Editar vídeo");
             System.out.println("5. Excluir vídeo");
+            System.out.println("6. Filtrar vídeos por categoria");
             System.out.println("8. Sair");
             System.out.print("Escolha uma opção: ");
             option = getPositiveInteger(scanner);
@@ -46,6 +49,11 @@ public class Main {
                     System.out.println("Digite o id do vídeo:");
                     id = getPositiveInteger(scanner);
                     videoService.removeById(id);
+                    break;
+                case 6:
+                    System.out.println("Digite a categoria que deseja filtrar os vídeos:");
+                    Category categoryFilter = getCategory(scanner);
+                    videoService.searchByCategory(categoryFilter);
                     break;
                 case 8:
                     System.out.println("Saindo do sistema...");
