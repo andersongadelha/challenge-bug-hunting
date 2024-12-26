@@ -25,7 +25,7 @@ public class VideoRepositoryImpl implements VideoRepository {
             bw.write(video.getTitle() + ";" + video.getDescription() + ";" + video.getDuration() + ";" + video.getCategory() + ";" + LocalDateUtil.serialize(video.getPublishDate()));
             bw.newLine();
         } catch (IOException e) {
-            // Ignorar erros por enquanto
+            System.out.println("Erro ao salvar video.");
         }
     }
 
@@ -41,7 +41,7 @@ public class VideoRepositoryImpl implements VideoRepository {
                 }
             }
         } catch (IOException e) {
-            // Ignorar erros por enquanto
+            System.out.println("Erro ao obter videos.");
         }
         return videos;
     }
