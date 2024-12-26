@@ -4,10 +4,33 @@ import util.LocalDateUtil;
 
 import java.time.LocalDate;
 
+import static util.LocalDateUtil.serialize;
+
 public class Video {
     private int id;
     private String title;
     private String description;
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setPublishDate(LocalDate publishDate) {
+        this.publishDate = publishDate;
+    }
+
     private int duration;
     private Category category;
     private LocalDate publishDate;
@@ -45,12 +68,17 @@ public class Video {
         return publishDate;
     }
 
+    @Override
+    public String toString() {
+        return id + ";" + title + ";" + description + ";" + duration + ";" + category + ";" + serialize(publishDate);
+    }
+
     public static Video fromString(String linha) {
         try {
             String[] parts = linha.split(";");
             return new Video(Integer.parseInt(parts[0]), parts[1], parts[2], Integer.parseInt(parts[3]), Category.deserialize(parts[4]), LocalDateUtil.deserialize(parts[5]));
         } catch (Exception e) {
-            System.out.println("Erro ao desserializar video.");
+            System.out.println("Erro ao desserializar vídeo.");
             return null;
         }
     }

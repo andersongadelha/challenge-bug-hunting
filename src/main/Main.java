@@ -18,7 +18,8 @@ public class Main {
             System.out.println("1. Adicionar vídeo");
             System.out.println("2. Listar vídeos");
             System.out.println("3. Pesquisar vídeo por título");
-            System.out.println("4. Sair");
+            System.out.println("4. Editar vídeo");
+            System.out.println("8. Sair");
             System.out.print("Escolha uma opção: ");
             option = getPositiveInteger(scanner);
 
@@ -35,10 +36,15 @@ public class Main {
                     videoService.searchByTitle(query);
                     break;
                 case 4:
+                    System.out.println("Digite o id do vídeo: ");
+                    int id = getPositiveInteger(scanner);
+                    videoService.editVideo(id);
+                    break;
+                case 8:
                     System.out.println("Saindo do sistema...");
                     break;
             }
-        } while (option != 4);
+        } while (option != 8);
 
         scanner.close();
     }
