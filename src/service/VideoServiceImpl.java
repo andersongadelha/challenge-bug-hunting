@@ -45,8 +45,9 @@ public class VideoServiceImpl implements VideoService {
 
         System.out.print("Digite a data de publicação (dd/MM/aaaa): ");
         LocalDate date = InputUtil.getLocalDate(scanner);
+        int nextId = repository.getLastId() + 1;
 
-        Video video = new Video(title, description, duration, category, date);
+        Video video = new Video(nextId, title, description, duration, category, date);
         repository.save(video);
         System.out.println("Vídeo adicionado com sucesso!");
     }
@@ -65,6 +66,7 @@ public class VideoServiceImpl implements VideoService {
     }
 
     private void showDetails(Video video) {
+        System.out.println("Id:" + video.getId());
         System.out.println("Titulo: " + video.getTitle());
         System.out.println("Descrição: " + video.getDescription());
         System.out.println("Duração: " + video.getDuration());

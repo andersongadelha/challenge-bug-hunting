@@ -22,7 +22,7 @@ public class VideoRepositoryImpl implements VideoRepository {
     @Override
     public void save(Video video) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
-            bw.write(video.getTitle() + ";" + video.getDescription() + ";" + video.getDuration() + ";" + video.getCategory() + ";" + LocalDateUtil.serialize(video.getPublishDate()));
+            bw.write(video.getId() + ";" + video.getTitle() + ";" + video.getDescription() + ";" + video.getDuration() + ";" + video.getCategory() + ";" + LocalDateUtil.serialize(video.getPublishDate()));
             bw.newLine();
         } catch (IOException e) {
             System.out.println("Erro ao salvar video.");
@@ -44,5 +44,12 @@ public class VideoRepositoryImpl implements VideoRepository {
             System.out.println("Erro ao obter videos.");
         }
         return videos;
+    }
+
+    @Override
+    public int getLastId() {
+        List<Video> videos = findAll();
+
+        return videos.size();
     }
 }
