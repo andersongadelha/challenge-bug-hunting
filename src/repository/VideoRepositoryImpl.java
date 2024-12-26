@@ -22,7 +22,7 @@ public class VideoRepositoryImpl implements VideoRepository {
     @Override
     public void save(Video video) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
-            bw.write(video.getTitulo() + ";" + video.getDescricao() + ";" + video.getDuracao() + ";" + video.getCategoria() + ";" + LocalDateUtil.serializar(video.getDataPublicacao()));
+            bw.write(video.getTitle() + ";" + video.getDescription() + ";" + video.getDuration() + ";" + video.getCategory() + ";" + LocalDateUtil.serialize(video.getPublishDate()));
             bw.newLine();
         } catch (IOException e) {
             // Ignorar erros por enquanto

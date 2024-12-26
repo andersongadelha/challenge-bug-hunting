@@ -1,17 +1,17 @@
 package model;
 
-public enum Categoria {
+public enum Category {
     DOCUMENTARIO("Documentário"),
     FILME("Filme"),
     SERIE("Série"),
     ;
 
-    Categoria(String descricao) {
+    Category(String description) {
     }
 
-    public static Categoria desserializar(String string) {
+    public static Category deserialize(String string) {
         try {
-            return Categoria.valueOf(string.toUpperCase());
+            return Category.valueOf(string.toUpperCase());
         } catch (IllegalArgumentException e) {
             System.out.println("Categoria inválida.");
             System.out.println("Categorias disponíveis: DOCUMENTARIO, FILME, SERIE.");

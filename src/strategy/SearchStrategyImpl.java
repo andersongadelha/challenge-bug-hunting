@@ -9,7 +9,7 @@ public class SearchStrategyImpl implements SearchStrategy {
     @Override
     public List<Video> searchByTitle(List<Video> videos, String query) {
         return videos.stream()
-                .filter(video -> video.getTitulo().toLowerCase().contains(query.toLowerCase()))
+                .filter(video -> video.getTitle().toLowerCase().contains(query.toLowerCase()))
                 .collect(Collectors.toList());
     }
 }

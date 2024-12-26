@@ -21,16 +21,16 @@ public class LocalDateUtil {
      *
      * @return String representando a data
      */
-    public static String serializar(LocalDate date) {
-        String dataString;
+    public static String serialize(LocalDate date) {
+        String stringDate;
         if (Objects.isNull(date)) {
             System.out.println("Data nula.");
-            dataString = "";
+            stringDate = "";
         } else {
-            dataString = date.format(FORMATTER);
+            stringDate = date.format(FORMATTER);
         }
 
-        return dataString;
+        return stringDate;
     }
 
     /**
@@ -40,15 +40,15 @@ public class LocalDateUtil {
      *
      * @return LocalDate convertido
      */
-    public static LocalDate desserializar(String string) {
-        LocalDate data;
+    public static LocalDate deserialize(String string) {
+        LocalDate date;
         if (Objects.isNull(string)) {
             System.out.println("Data nula.");
-            data = null;
+            date = null;
         } else {
-            data = LocalDate.parse(string, FORMATTER);
+            date = LocalDate.parse(string, FORMATTER);
         }
 
-        return data;
+        return date;
     }
 }

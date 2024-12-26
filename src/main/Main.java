@@ -5,13 +5,13 @@ import service.VideoServiceImpl;
 
 import java.util.Scanner;
 
-import static util.InputUtil.getOpcaoInteira;
+import static util.InputUtil.getPositiveInteger;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         VideoService videoService = new VideoServiceImpl(scanner);
-        int opcao;
+        int option;
 
         do {
             System.out.println("\n=== Sistema de Gerenciamento de Vídeos ===");
@@ -20,9 +20,9 @@ public class Main {
             System.out.println("3. Pesquisar vídeo por título");
             System.out.println("4. Sair");
             System.out.print("Escolha uma opção: ");
-            opcao = getOpcaoInteira(scanner);
+            option = getPositiveInteger(scanner);
 
-            switch (opcao) {
+            switch (option) {
                 case 1:
                     videoService.addVideo();
                     break;
@@ -38,7 +38,7 @@ public class Main {
                     System.out.println("Saindo do sistema...");
                     break;
             }
-        } while (opcao != 4);
+        } while (option != 4);
 
         scanner.close();
     }

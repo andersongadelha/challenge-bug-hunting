@@ -1,6 +1,6 @@
 package service;
 
-import model.Categoria;
+import model.Category;
 import model.Video;
 import repository.VideoRepository;
 import repository.VideoRepositoryImpl;
@@ -13,18 +13,18 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
-import static util.InputUtil.getCategoria;
-import static util.InputUtil.getInputNaoVazio;
-import static util.InputUtil.getOpcaoInteira;
+import static util.InputUtil.getCategory;
+import static util.InputUtil.getNonEmptyInput;
+import static util.InputUtil.getPositiveInteger;
 
 public class VideoServiceImpl implements VideoService {
-    private static final String ARQUIVO_VIDEOS = "videos.txt";
+    private static final String VIDEOS_FILE = "videos.txt";
     private final VideoRepository repository;
     private final Scanner scanner;
     private final SearchStrategy searchStrategy;
 
     public VideoServiceImpl(Scanner scanner) {
-        this.repository = new VideoRepositoryImpl(ARQUIVO_VIDEOS);
+        this.repository = new VideoRepositoryImpl(VIDEOS_FILE);
         this.scanner = scanner;
         this.searchStrategy = new SearchStrategyImpl();
     }
@@ -32,21 +32,21 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public void addVideo() {
         System.out.print("Digite o título do vídeo: ");
-        String titulo = getInputNaoVazio(scanner);
+        String title = getNonEmptyInput(scanner);
 
         System.out.print("Digite a descrição do vídeo: ");
-        String descricao = getInputNaoVazio(scanner);
+        String description = getNonEmptyInput(scanner);
 
         System.out.print("Digite a duração do vídeo (em minutos): ");
-        int duracao = getOpcaoInteira(scanner);
+        int duration = getPositiveInteger(scanner);
 
         System.out.print("Digite a categoria do vídeo: ");
-        Categoria categoria = getCategoria(scanner);
+        Category category = getCategory(scanner);
 
         System.out.print("Digite a data de publicação (dd/MM/aaaa): ");
-        LocalDate data = InputUtil.getLocalDate(scanner);
+        LocalDate date = InputUtil.getLocalDate(scanner);
 
-        Video video = new Video(titulo, descricao, duracao, categoria, data);
+        Video video = new Video(title, description, duration, category, date);
         repository.save(video);
         System.out.println("Vídeo adicionado com sucesso!");
     }
@@ -54,22 +54,22 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public void listVideos() {
         List<Video> videos = repository.findAll();
-        videos.forEach(this::detalhes);
+        videos.forEach(this::showDetails);
     }
 
     @Override
     public void searchByTitle(String query) {
         List<Video> videos = repository.findAll();
         List<Video> videosFiltrados = searchStrategy.searchByTitle(videos, query);
-        videosFiltrados.forEach(this::detalhes);
+        videosFiltrados.forEach(this::showDetails);
     }
 
-    private void detalhes(Video video) {
-        System.out.println("Titulo: " + video.getTitulo());
-        System.out.println("Descrição: " + video.getDescricao());
-        System.out.println("Duração: " + video.getDuracao());
-        System.out.println("Categoria: " + video.getCategoria());
-        System.out.println("Data de publicação: " + LocalDateUtil.serializar(video.getDataPublicacao()));
+    private void showDetails(Video video) {
+        System.out.println("Titulo: " + video.getTitle());
+        System.out.println("Descrição: " + video.getDescription());
+        System.out.println("Duração: " + video.getDuration());
+        System.out.println("Categoria: " + video.getCategory());
+        System.out.println("Data de publicação: " + LocalDateUtil.serialize(video.getPublishDate()));
         System.out.println();
     }
 }

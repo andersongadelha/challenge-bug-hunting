@@ -5,44 +5,44 @@ import util.LocalDateUtil;
 import java.time.LocalDate;
 
 public class Video {
-    private String titulo;
-    private String descricao;
-    private int duracao;
-    private Categoria categoria;
-    private LocalDate dataPublicacao;
+    private String title;
+    private String description;
+    private int duration;
+    private Category category;
+    private LocalDate publishDate;
 
-    public Video(String titulo, String descricao, int duracao, Categoria categoria, LocalDate dataPublicacao) {
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.duracao = duracao;
-        this.categoria = categoria;
-        this.dataPublicacao = dataPublicacao;
+    public Video(String title, String description, int duration, Category category, LocalDate publishDate) {
+        this.title = title;
+        this.description = description;
+        this.duration = duration;
+        this.category = category;
+        this.publishDate = publishDate;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public int getDuracao() {
-        return duracao;
+    public int getDuration() {
+        return duration;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Category getCategory() {
+        return category;
     }
 
-    public LocalDate getDataPublicacao() {
-        return dataPublicacao;
+    public LocalDate getPublishDate() {
+        return publishDate;
     }
 
     public static Video fromString(String linha) {
         try {
-            String[] partes = linha.split(";");
-            return new Video(partes[0], partes[1], Integer.parseInt(partes[2]), Categoria.desserializar(partes[3]), LocalDateUtil.desserializar(partes[4]));
+            String[] parts = linha.split(";");
+            return new Video(parts[0], parts[1], Integer.parseInt(parts[2]), Category.deserialize(parts[3]), LocalDateUtil.deserialize(parts[4]));
         } catch (Exception e) {
             return null; // Ignora erros de parsing
         }

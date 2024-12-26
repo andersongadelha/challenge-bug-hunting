@@ -1,6 +1,6 @@
 package util;
 
-import model.Categoria;
+import model.Category;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -23,15 +23,15 @@ public class InputUtil {
      *
      * @return Um inteiro maior que zero.
      */
-    public static int getOpcaoInteira(Scanner scanner) {
-        int entradaTratada= 0;
-        boolean entradaValida = false;
-        while (!entradaValida) {
-            String entrada = scanner.nextLine();
+    public static int getPositiveInteger(Scanner scanner) {
+        int output = 0;
+        boolean validInput = false;
+        while (!validInput) {
+            String input = scanner.nextLine();
             try {
-                entradaTratada = Integer.decode(entrada);
-                if (entradaTratada > 0) {
-                    entradaValida = true;
+                output = Integer.decode(input);
+                if (output > 0) {
+                    validInput = true;
                 } else {
                     System.out.println("A entrada deve ser um valor inteiro maior que zero.");
                 }
@@ -40,7 +40,7 @@ public class InputUtil {
             }
         }
 
-        return entradaTratada;
+        return output;
     }
 
     /**
@@ -50,17 +50,17 @@ public class InputUtil {
      *
      * @return Uma String não vazia.
      */
-    public static String getInputNaoVazio(Scanner scanner) {
-        String entrada;
+    public static String getNonEmptyInput(Scanner scanner) {
+        String input;
         do {
-            entrada = scanner.nextLine();
+            input = scanner.nextLine();
 
-            if (entrada.isEmpty()) {
+            if (input.isEmpty()) {
                 System.out.println("A entrada não pode ser vazia.");
             }
-        } while (entrada.isEmpty());
+        } while (input.isEmpty());
 
-        return entrada;
+        return input;
     }
 
     /**
@@ -68,17 +68,17 @@ public class InputUtil {
      *
      * @param scanner
      *
-     * @return Categoria
+     * @return Category
      */
-    public static Categoria getCategoria(Scanner scanner) {
-        String entrada;
-        Categoria categoria;
+    public static Category getCategory(Scanner scanner) {
+        String input;
+        Category category;
         do {
-            entrada = scanner.nextLine();
-            categoria = Categoria.desserializar(entrada);
-        } while (Objects.isNull(categoria));
+            input = scanner.nextLine();
+            category = Category.deserialize(input);
+        } while (Objects.isNull(category));
 
-        return categoria;
+        return category;
     }
 
     /**
@@ -89,17 +89,17 @@ public class InputUtil {
      * @return LocalDate
      */
     public static LocalDate getLocalDate(Scanner scanner) {
-        String entrada;
-        LocalDate data = null;
+        String input;
+        LocalDate date = null;
         do {
-            entrada = scanner.nextLine();
+            input = scanner.nextLine();
             try {
-                data = LocalDateUtil.desserializar(entrada);
+                date = LocalDateUtil.deserialize(input);
             } catch (Exception e) {
                 System.out.println("Digite a data no formato dd/MM/aaaa:");
             }
-        } while (Objects.isNull(data));
+        } while (Objects.isNull(date));
 
-        return data;
+        return date;
     }
 }
