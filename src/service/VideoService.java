@@ -10,4 +10,5 @@ public interface VideoService {
     void searchByCategory(Category query);
     void editVideo(int id);
     void removeById(int id);
+    void showStatistics();
 }

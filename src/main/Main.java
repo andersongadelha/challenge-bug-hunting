@@ -25,7 +25,8 @@ public class Main {
             System.out.println("5. Excluir vídeo");
             System.out.println("6. Filtrar vídeos por categoria");
             System.out.println("7. Listar vídeos por ordem cronológica");
-            System.out.println("8. Sair");
+            System.out.println("8. Relatório de estatísticas");
+            System.out.println("9. Sair");
             System.out.print("Escolha uma opção: ");
             option = getPositiveInteger(scanner);
 
@@ -60,10 +61,13 @@ public class Main {
                     videoService.listVideosOrderByDate();
                     break;
                 case 8:
+                    videoService.showStatistics();
+                    break;
+                case 9:
                     System.out.println("Saindo do sistema...");
                     break;
             }
-        } while (option != 8);
+        } while (option != 9);
 
         scanner.close();
     }

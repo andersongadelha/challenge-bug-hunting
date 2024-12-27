@@ -119,11 +119,24 @@ public class VideoServiceImpl implements VideoService {
                 () -> System.out.println("Não foi encontrado um vídeo com id " + id));
     }
 
+    @Override
+    public void showStatistics() {
+        List<Video> videos = repository.findAll();
+        int totalDuration = videos.stream().mapToInt(Video::getDuration).sum();
+        System.out.println("\n=== Relatório de estatísticas ===");
+        System.out.println("Quantidade de vídeos: " + videos.size());
+        System.out.println("Duração total dos vídeos: " + totalDuration + " minutos");
+        System.out.println("Quantidade de vídeos por categoria");
+        System.out.println("DOCUMENTARIO: " + searchStrategy.searchByCategory(videos, Category.DOCUMENTARIO).size());
+        System.out.println("FILME: " + searchStrategy.searchByCategory(videos, Category.FILME).size());
+        System.out.println("SERIE: " + searchStrategy.searchByCategory(videos, Category.SERIE).size());
+    }
+
     private void showDetails(Video video) {
         System.out.println("Id:" + video.getId());
         System.out.println("Titulo: " + video.getTitle());
         System.out.println("Descrição: " + video.getDescription());
-        System.out.println("Duração: " + video.getDuration());
+        System.out.println("Duração: " + video.getDuration() + " minutos");
         System.out.println("Categoria: " + video.getCategory());
         System.out.println("Data de publicação: " + serialize(video.getPublishDate()));
         System.out.println();
