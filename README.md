@@ -29,7 +29,7 @@ Antes de começar, certifique-se de que você tem as ferramentas necessárias in
 O código será dividido em pacotes para organizar melhor as responsabilidades:
 
 - model: Contém a classe Video.
-- repository: Contém a interface VideoRepository e sua implementação FileVideoRepository.
+- repository: Contém a interface VideoRepository e sua implementação VideoRepositoryImpl.
 - service: Contém a interface VideoService e sua implementação VideoServiceImpl.
 - strategy: Contém estratégias para busca de vídeos (SearchStrategy).
 - main: Contém a classe principal Main.
@@ -214,4 +214,4 @@ Alguns pontos devem ser levados em consideração durante a comunicação da pes
 ---
 
 ## 🚀 Prontos? Vamos caçar os bugs! 👾🔫
-   1Boa sorte no desafio! Lembre-se de que o objetivo principal é aprender e se divertir enquanto melhora suas habilidades. Se precisar de ajuda, não hesite em nos chamar no Chat. Estamos aqui para ajudar! 😊
+   Boa sorte no desafio! Lembre-se de que o objetivo principal é aprender e se divertir enquanto melhora suas habilidades. Se precisar de ajuda, não hesite em nos chamar no Chat. Estamos aqui para ajudar! 😊
