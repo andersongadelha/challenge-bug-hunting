@@ -1,5 +1,9 @@
 package service;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 import model.Category;
 import model.Video;
 import repository.VideoRepository;
@@ -7,12 +11,6 @@ import repository.VideoRepositoryImpl;
 import strategy.SearchStrategy;
 import strategy.SearchStrategyImpl;
 import util.InputUtil;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
-
 import static util.InputUtil.getCategory;
 import static util.InputUtil.getNonEmptyInput;
 import static util.InputUtil.getPositiveInteger;
@@ -34,6 +32,7 @@ public class VideoServiceImpl implements VideoService {
     public void addVideo() {
         System.out.print("Digite o título do vídeo: ");
         String title = getNonEmptyInput(scanner);
+
 
         System.out.print("Digite a descrição do vídeo: ");
         String description = getNonEmptyInput(scanner);
@@ -85,25 +84,54 @@ public class VideoServiceImpl implements VideoService {
         Optional<Video> optionalVideo = repository.findById(id);
         optionalVideo.ifPresentOrElse(
                 video -> {
-                    System.out.println("Editando vídeo:");
-                    System.out.println("Titulo: " + video.getTitle());
-                    System.out.println("Digite a nova alteração para titulo:");
-                    String newTitle = InputUtil.getNonEmptyInput(scanner);
-                    System.out.println("Descrição: " + video.getDescription());
-                    System.out.println("Digite a nova alteração para descrição:");
-                    String newDescription = InputUtil.getNonEmptyInput(scanner);
-                    System.out.println("Duração: " + video.getDuration());
-                    System.out.println("Digite a nova alteração para duração:");
-                    int newDuration = InputUtil.getPositiveInteger(scanner);
-                    System.out.println("Categoria: " + video.getCategory());
-                    System.out.println("Digite a nova alteração para categoria:");
-                    Category newCategory = InputUtil.getCategory(scanner);
-                    System.out.println("Data de publicação: " + serialize(video.getPublishDate()));
-                    System.out.println("Digite a nova alteração para a data de publicação:");
-                    LocalDate newPublishDate = InputUtil.getLocalDate(scanner);
+                    boolean editing = true;
+                    while (editing) {
+                        System.out.println("Editando vídeo:");
+                        System.out.println("1. Título: " + video.getTitle());
+                        System.out.println("2. Descrição: " + video.getDescription());
+                        System.out.println("3. Duração: " + video.getDuration());
+                        System.out.println("4. Categoria: " + video.getCategory());
+                        System.out.println("5. Data de publicação: " + serialize(video.getPublishDate()));
+                        System.out.println("6. Salvar e sair");
+                        System.out.println("Escolha o número do atributo que deseja alterar:");
 
-                    repository.update(id, newTitle, newDescription, newDuration, newCategory, newPublishDate);
-                    System.out.println("Vídeo atualizado com sucesso.");
+                        int choice = InputUtil.getPositiveInteger(scanner);
+
+                        switch (choice) {
+                            case 1 -> {
+                                System.out.println("Digite a nova alteração para título:");
+                                String newTitle = InputUtil.getNonEmptyInput(scanner);
+                                video.setTitle(newTitle);
+                            }
+                            case 2 -> {
+                                System.out.println("Digite a nova alteração para descrição:");
+                                String newDescription = InputUtil.getNonEmptyInput(scanner);
+                                video.setDescription(newDescription);
+                            }
+                            case 3 -> {
+                                System.out.println("Digite a nova alteração para duração:");
+                                int newDuration = InputUtil.getPositiveInteger(scanner);
+                                video.setDuration(newDuration);
+                            }
+                            case 4 -> {
+                                System.out.println("Digite a nova alteração para categoria:");
+                                Category newCategory = InputUtil.getCategory(scanner);
+                                video.setCategory(newCategory);
+                            }
+                            case 5 -> {
+                                System.out.println("Digite a nova alteração para a data de publicação:");
+                                LocalDate newPublishDate = InputUtil.getLocalDate(scanner);
+                                video.setPublishDate(newPublishDate);
+                            }
+                            case 6 -> {
+                                repository.update(id, video.getTitle(), video.getDescription(), video.getDuration(),
+                                        video.getCategory(), video.getPublishDate());
+                                System.out.println("Vídeo atualizado com sucesso.");
+                                editing = false;
+                            }
+                            default -> System.out.println("Opção inválida. Tente novamente.");
+                        }
+                    }
                 },
                 () -> System.out.println("Não foi encontrado um vídeo com id " + id));
     }
