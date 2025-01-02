@@ -13,3 +13,4 @@
 14;The Mandalorian;Um caçador de recompensas navega pela galáxia após a queda do Império;40;SERIE;12/11/2019
 15;13th;Um documentário sobre a história da desigualdade racial nos EUA;100;DOCUMENTARIO;07/10/2016
 16;Matrix;testando edição parcial;136;FILME;21/05/1999
+17;teste;teste;2;FILME;02/01/2020

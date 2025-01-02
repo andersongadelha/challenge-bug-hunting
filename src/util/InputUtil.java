@@ -95,6 +95,11 @@ public class InputUtil {
             input = scanner.nextLine();
             try {
                 date = LocalDateUtil.deserialize(input);
+                if(date.isAfter(LocalDate.now())) {
+                    System.out.println("A data não pode ser no futuro");
+                    System.out.println("Digite novamente:");
+                    date = null;
+                }
             } catch (Exception e) {
                 System.out.println("Digite a data no formato dd/MM/aaaa:");
             }
