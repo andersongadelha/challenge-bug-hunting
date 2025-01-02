@@ -97,7 +97,7 @@ public class InputUtil {
                 date = LocalDateUtil.deserialize(input);
                 if(date.isAfter(LocalDate.now())) {
                     System.out.println("A data não pode ser no futuro");
-                    System.out.println("Digite novamente:");
+                    System.out.println("Digite novamente:1");
                     date = null;
                 }
             } catch (Exception e) {

@@ -1,6 +1,7 @@
 package service;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -40,7 +41,10 @@ public class VideoServiceImpl implements VideoService {
         System.out.print("Digite a duração do vídeo (em minutos): ");
         int duration = getPositiveInteger(scanner);
 
-        System.out.print("Digite a categoria do vídeo: ");
+        System.out.print("Digite a categoria do vídeo dentre as categorias disponíveis ");
+        System.out.print("( ");
+        Arrays.stream(Category.values()).forEach(category -> System.out.print(category.name() + " "));
+        System.out.print("): ");
         Category category = getCategory(scanner);
 
         System.out.print("Digite a data de publicação (dd/MM/aaaa): ");
