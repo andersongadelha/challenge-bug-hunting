@@ -3,11 +3,10 @@ package main;
 import model.Category;
 import service.VideoService;
 import service.VideoServiceImpl;
-
-import java.util.Scanner;
-
 import static util.InputUtil.getCategory;
 import static util.InputUtil.getPositiveInteger;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {

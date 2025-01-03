@@ -1,10 +1,5 @@
 package service;
 
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
 import model.Category;
 import model.Video;
 import repository.VideoRepository;
@@ -16,6 +11,12 @@ import static util.InputUtil.getCategory;
 import static util.InputUtil.getNonEmptyInput;
 import static util.InputUtil.getPositiveInteger;
 import static util.LocalDateUtil.serialize;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class VideoServiceImpl implements VideoService {
     private static final String VIDEOS_FILE = "videos.txt";

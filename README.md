@@ -51,7 +51,7 @@ O sistema permite que o usuário:
 
 No entanto, o código atual apresenta problemas que você deverá corrigir.
 
-##📋 Instruções para entregar seu desafio
+## 📋 Instruções para entregar seu desafio
 
 1. Faça o Fork do repositório para o seu github.
 

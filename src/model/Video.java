@@ -1,10 +1,9 @@
 package model;
 
 import util.LocalDateUtil;
+import static util.LocalDateUtil.serialize;
 
 import java.time.LocalDate;
-
-import static util.LocalDateUtil.serialize;
 
 public class Video {
     private int id;
